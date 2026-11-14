@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.services.farming_advice import get_farming_advice
 
 app = FastAPI(
     title="KhetPulse AI",
@@ -22,3 +23,6 @@ def health_check():
         "status": "healthy",
         "project": "KhetPulse AI"
     }
+@app.get("/farming-advice")
+def farming_advice(crop: str):
+    return get_farming_advice(crop)
