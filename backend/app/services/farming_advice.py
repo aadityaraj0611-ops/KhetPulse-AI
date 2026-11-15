@@ -1,6 +1,12 @@
 def get_farming_advice(crop: str) -> dict:
     crop = crop.lower().strip()
 
+    if not crop:
+        return{
+            "success": False,
+            "message": "Crop name cannot be empty."
+        }
+
     farming_data = {
         "wheat": {
             "crop": "Wheat",

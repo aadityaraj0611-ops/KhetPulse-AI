@@ -25,3 +25,15 @@ def test_crop_name_normalization():
 
     assert result["success"] is True
     assert result["data"]["crop"] == "Wheat"
+
+def test_empty_crop_name():
+    result = get_farming_advice("")
+
+    assert result["success"] is False
+    assert result["message"] == "Crop name cannot be empty."
+
+def test_whitespace_crop_name():
+    result = get_farming_advice(" ")
+
+    assert result["success"] is False
+    assert result["message"] == "Crop name cannot be empty."
